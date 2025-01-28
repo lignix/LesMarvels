@@ -5,11 +5,14 @@
  * @return {Promise<json>}
  */
 import crypto from 'crypto';
+import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 
+dotenv.config();
+
 export const getData = async (url) => {
-    const publicKey = "a7d4eb84be57c1055e4fa84029cfbcf4";
-    const privateKey = "0682b958353ae253944ec65457a42be846e0b8c8";
+    const publicKey = process.env.MARVEL_API_PUBLIC_KEY;
+    const privateKey = process.env.MARVEL_API_PRIVATE_KEY;
     const timestamp = Date.now().toString();
 
     try {
